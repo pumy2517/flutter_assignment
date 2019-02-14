@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './register.dart';
-import './mainpage.dart';
+import './home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,11 +12,12 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<StatefulWidget> {
   TextEditingController username = new TextEditingController();
   TextEditingController password = new TextEditingController();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
+      key: _scaffoldKey,
       resizeToAvoidBottomPadding: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -67,8 +68,14 @@ class LoginScreenState extends State<StatefulWidget> {
                   child: Text("LOGIN"),
                   onPressed: () {
                     if (username.text.isEmpty || password.text.isEmpty) {
+                      _scaffoldKey.currentState.showSnackBar(SnackBar(
+                        content: Text("กรุณาระบุ user or password"),
+                      ));
                     } else if (username.text == "admin" &&
                         password.text == "admin") {
+                      _scaffoldKey.currentState.showSnackBar(SnackBar(
+                        content: Text("user or password ไม่ถูกต้อง"),
+                      ));
                     } else {
                       Navigator.push(
                           context,
@@ -82,7 +89,12 @@ class LoginScreenState extends State<StatefulWidget> {
             Align(
               alignment: Alignment.centerRight,
               child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterScreen()));
+                },
                 child: Text("Register New Account"),
                 textColor: Colors.lightGreen[800],
               ),

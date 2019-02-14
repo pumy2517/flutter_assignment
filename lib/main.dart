@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './ui/login.dart';
+import './ui/register.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,14 +10,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Assignment1',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
       ),
-
       initialRoute: "/",
       routes: {
         "/": (context) => LoginScreen(),
+        "/register": (context) => RegisterScreen()
       },
     );
   }
 }
-
