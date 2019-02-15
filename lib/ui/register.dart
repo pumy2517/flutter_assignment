@@ -36,7 +36,7 @@ class RegisterScreenState extends State<StatefulWidget> {
             TextField(
               keyboardType: TextInputType.emailAddress,
               controller: email,
-              style: TextStyle(color: Colors.blue),
+              style: TextStyle(color: Colors.blue, fontSize: 15),
               decoration: InputDecoration(
                   hintText: "Email",
                   enabledBorder: new UnderlineInputBorder(
