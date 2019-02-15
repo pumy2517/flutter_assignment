@@ -18,15 +18,13 @@ class LoginScreenState extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      resizeToAvoidBottomPadding: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Center(
-            child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+            child: new ListView(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 60.0, bottom: 20.0),
+              padding: const EdgeInsets.only(top: 40.0, bottom: 20.0),
               child: Image.asset(
                 "resources/loginpic.jpg",
                 height: 170,
@@ -62,7 +60,7 @@ class LoginScreenState extends State<StatefulWidget> {
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: ButtonTheme(
-                minWidth: 300.0,
+                minWidth: double.infinity,
                 child: RaisedButton(
                   color: Colors.grey[300],
                   child: Text("LOGIN"),
@@ -88,15 +86,21 @@ class LoginScreenState extends State<StatefulWidget> {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterScreen()));
-                },
-                child: Text("Register New Account"),
-                textColor: Colors.lightGreen[800],
+              child: ButtonTheme(
+                padding: new EdgeInsets.all(0.0),
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()));
+                  },
+                  child: Text(
+                    "Register New Account",
+                    textAlign: TextAlign.right,
+                  ),
+                  textColor: Colors.lightGreen[800],
+                ),
               ),
             ),
           ],
